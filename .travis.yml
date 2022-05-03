@@ -22,3 +22,16 @@ after_success:
   - docker push unchaptered/docker-app-frontend
   - docker push unchaptered/docker-app-backend
   - docker push unchaptered/docker-app-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-proxy"
+  env: "Dockerreactproxy-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-404540290465"
+  bucket_pass: "docker-react-proxy"
+  on:
+    branch: main
+  
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY

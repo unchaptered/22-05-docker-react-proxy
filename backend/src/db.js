@@ -2,10 +2,12 @@ const mysql = require('mysql');
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'mysql', // docker-compose.yml 서비스 이름인 mysql
-    user: 'root',
-    password: 'reactpw',
-    database: 'reactapp'
+    // docker-compose.yml 서비스 이름인 mysql
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_ROOT_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    port: process.env.MYSQL_PORT,
 });
 
 exports.pool = pool;

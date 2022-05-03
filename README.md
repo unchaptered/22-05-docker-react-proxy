@@ -4,6 +4,17 @@
 
 Nginx 를 이용하여 Frontend / Backend 를 구분하여 개발 하였습니다.
 
+## Usage
+
+사용 중인 서비스 항목입니다.
+예산 설정 해두었으나, 기간 경과 이후 꼭 항목 확인하여 해지하세요.
+
+1. EB, Elastic Beanstalk
+1.1. VPC
+1.2. S3 Bucket
+
+2. RDS, Relational Database Service
+
 ## Ngincx 의 설계 기법
 
 1. Nginx 의 Proxy 를 이용한 설계
