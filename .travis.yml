@@ -1,0 +1,24 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - echo "start Create an image with Dockerfile"
+  - docker build -t unchaptered/docker-dev-frontend -f ./frontend/Dockerfile.dev ./frontend
+
+script:
+  - docker run -e CI=true unchaptered/docker-dev-frontend
+
+after_success:
+  - docker build -t unchaptered/docker-app-frontend ./frontend
+  - docker build -t unchaptered/docker-app-backend ./backend
+  - docker build -t unchaptered/docker-app-nginx ./nginx
+  
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  
+  - docker push -t unchaptered/docker-app-frontend
+  - docker push -t unchaptered/docker-app-backend
+  - docker push -t unchaptered/docker-app-nginx
