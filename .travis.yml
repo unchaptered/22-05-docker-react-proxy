@@ -17,8 +17,8 @@ after_success:
   - docker build -t unchaptered/docker-app-backend ./backend
   - docker build -t unchaptered/docker-app-nginx ./nginx
   
-  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  - docker login -u "$DOCKER_HUB_ID" "$DOCKER_ACCESS_TOKEN"
   
-  - docker push -t unchaptered/docker-app-frontend
-  - docker push -t unchaptered/docker-app-backend
-  - docker push -t unchaptered/docker-app-nginx
+  - docker push unchaptered/docker-app-frontend
+  - docker push unchaptered/docker-app-backend
+  - docker push unchaptered/docker-app-nginx
