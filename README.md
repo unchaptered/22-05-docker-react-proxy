@@ -2,7 +2,7 @@
 
 본 프로젝트는 _2022년 5월 02일_ 에 작성되었습니다.
 
-Nginx 를 이용하여 Frontend / Backend 를 구분하여 개발 하였습니다.
+Nginx 를 이용하여 Frontend / Backend 를 구분하여 개발 하였습니다. 
 
 ## Usage
 
