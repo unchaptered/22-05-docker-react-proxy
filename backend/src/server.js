@@ -10,6 +10,21 @@ const PORT = 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+db.pool.query(`CREATE TABLE lists (
+
+    id INTEGER AUTO_INCREMENT,
+   
+    value TEXT, 
+   
+    PRIMARY KEY (id)
+   
+   )`, (err, results, fileds) => {
+   
+   console.log('results', results)
+   
+   });
+   
+
 // DB List 테이블에 있는 모든 데이터를 프론트 앤드로 보내주기
 
 app.get('/api/values', (req, res) => {
