@@ -12,15 +12,15 @@ script:
   - docker run -e CI=true unchaptered/docker-dev-frontend npm test
 
 after_success:
-  - docker build -t unchaptered/docker-app-frontend -f ./frontend/Dockerfile ./frontend
-  - docker build -t unchaptered/docker-app-nginx -f ./nginx/Dockerfile ./nginx
-  - docker build -t unchaptered/docker-app-backend -f ./backend/Dockerfile ./backend
+  - docker build -t unchaptered/docker-app-frontend:0.1.0 -f ./frontend/Dockerfile ./frontend
+  - docker build -t unchaptered/docker-app-nginx:0.1.0 -f ./nginx/Dockerfile ./nginx
+  - docker build -t unchaptered/docker-app-backend:0.1.0 -f ./backend/Dockerfile ./backend
   
   - docker login -u "$DOCKER_HUB_ID" -p "$DOCKER_ACCESS_TOKEN" docker.io
 
-  - docker push unchaptered/docker-app-frontend
-  - docker push unchaptered/docker-app-nginx
-  - docker push unchaptered/docker-app-backend
+  - docker push unchaptered/docker-app-frontend:0.1.0
+  - docker push unchaptered/docker-app-nginx:0.1.0
+  - docker push unchaptered/docker-app-backend:0.1.0
 
 deploy:
   provider: elasticbeanstalk
